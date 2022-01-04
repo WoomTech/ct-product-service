@@ -1,0 +1,92 @@
+{
+  "name": "woom-product-service",
+  "version": "0.0.1",
+  "description": " \"Woom Product Service\"",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "yarn build && node ./dist/service.js",
+    "start:dev": "nodemon ./src/service.ts",
+    "lint": "tsc --noEmit && eslint \"src/**/*.{js,ts,tsx}\"",
+    "lint:fix": "tsc --noEmit && eslint \"src/**/*.{js,ts,tsx}\" --quiet --fix",
+    "test": "NODE_ENV=test PORT=3001 jest --detectOpenHandles",
+    "test:coverage": "jest --collect-coverage --coverageDirectory coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WoomTech/ct-product-service.git"
+  },
+  "author": "WoomTech",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WoomTech/ct-product-service/issues"
+  },
+  "homepage": "https://github.com/WoomTech/ct-product-service#readme",
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "class-transformer": "^0.4.0",
+    "class-validator": "^0.13.1",
+    "dotenv": "^10.0.0",
+    "inversify": "^5.1.1",
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-helmet": "^6.1.0",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^10.0.0",
+    "mongoose": "^6.0.3",
+    "node-fetch": "^2.6.1",
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^4.3.5",
+    "uuid": "^8.3.2",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.0",
+    "@types/koa": "^2.13.4",
+    "@types/koa-bodyparser": "^4.3.3",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-router": "^7.4.4",
+    "@types/node": "^16.4.13",
+    "@types/node-fetch": "^2.5.11",
+    "@types/supertest": "^2.0.11",
+    "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "@typescript-eslint/parser": "^4.28.3",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2",
+    "supertest": "^6.1.4",
+    "ts-jest": "^27.0.4",
+    "ts-node": "^10.1.0"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "modulePathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "roots": [
+      "<rootDir>/tests"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}

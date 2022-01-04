@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: external-services
+  namespace: default
+data:
+  remote.proxy.url: content-proxy.default.svc.cluster.local:8000
+  remote.profile.url: profile.default.svc.cluster.local:8000

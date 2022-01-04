@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: questionsvc-deployment
+  labels:
+    app: questionsvc-app
+spec:
+  selector:
+    matchLabels:
+      app: questionsvc-app
+  template:
+    metadata:
+      labels:
+        app: questionsvc-app
+    spec:
+      containers:
+        - name: question-svc
+          image: ${image}
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: services-core-api-urls
+            - configMapRef:
+                name: infrastructure
+            - secretRef:
+                name: infrastructure
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: questionsvc-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 8000
+      name: http
+  selector:
+    app: questionsvc-app
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: questionsvc-app-hpa
+  labels:
+    app: questionsvc-app
+    tier: frontend
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1beta1
+    kind: Deployment
+    name: questionsvc-deployment
+  minReplicas: ${minreplicas}
+  maxReplicas: ${maxreplicas}
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: ${targetCPUUtilization}

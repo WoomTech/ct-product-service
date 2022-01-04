@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: woom-feed-manager-config
+  namespace: default
+data:
+  port: "3031"
+  service.cm.content.proxy.url: http://35.223.37.73:30300
+  service.core.profile.manager.url: http://35.223.37.73:30001
+  swagger: "true"
+  onboardingDays: "3"
+  mongo.contentmanager.url: mongo-mongodb.default.svc.cluster.local:27017
+  mongo.contentmanager.password: obelix
+  mongo.contentmanager.user: feederuser
+  mongo.contentmanager.db: feedmanager
+  mongodb://woomadmin:BOiii833o39ilimn12Wsx@dev-db-shard-00-00.7kkat.mongodb.net:27017,dev-db-shard-00-01.7kkat.mongodb.net:27017,dev-db-shard-00-02.7kkat.mongodb.net:27017/admin?authSource=admin&replicaSet=atlas-yhktgx-shard-0&readPreference=primary&ssl=true
+mongo.contentmanager.url: dev-db-shard-00-00.7kkat.mongodb.net:27017,dev-db-shard-00-01.7kkat.mongodb.net:27017,dev-db-shard-00-02.7kkat.mongodb.net:27017
+mongo.contents.url:      dev-db-shard-00-00.7kkat.mongodb.net:27017,dev-db-shard-00-01.7kkat.mongodb.net:27017,dev-db-shard-00-02.7kkat.mongodb.net:27017/?ssl=true&authSource=admin&replicaSet=atlas-yhktgx-shard-0
+mongo.endpoint: dev-db-shard-00-00.7kkat.mongodb.net:27017,dev-db-shard-00-01.7kkat.mongodb.net:27017,dev-db-shard-00-02.7kkat.mongodb.net:27017/?ssl=true&authSource=admin&replicaSet=atlas-yhktgx-shard-0
+mongo.subscriptions.url: dev-db-shard-00-00.7kkat.mongodb.net:27017,dev-db-shard-00-01.7kkat.mongodb.net:27017,dev-db-shard-00-02.7kkat.mongodb.net:27017/?ssl=true&authSource=admin&replicaSet=atlas-yhktgx-shard-0

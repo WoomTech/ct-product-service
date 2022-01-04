@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-databases-urls
+  namespace: default
+data:
+  mongo.contentmanager.url: mongo-mongodb.default.svc.cluster.local:27017
